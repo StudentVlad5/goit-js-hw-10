@@ -1,12 +1,13 @@
 import './css/styles.css';
+import Notiflix from 'notiflix';
 var debounce = require('lodash.debounce');
 import findCountry from "./fetchCountries"
 const DEBOUNCE_DELAY = 1000; //замінити на 300 по умовам задачі
 
 
-let countriesObject = {};
 let countryNameForSeach = document.querySelector('#search-box');
-let countryContainer = document.querySelector('.country-info');
+let perem = '';
+
 
 countryNameForSeach.autofocus = true;
 countryNameForSeach.pattern = "[A-Za-z]";
@@ -16,10 +17,10 @@ countryNameForSeach.placeholder = "Enter country name";
 
 countryNameForSeach.addEventListener('input', debounce(findCountry, DEBOUNCE_DELAY))
 
-document.addEventListener('input', seachCountry)
+document.querySelector('.country-list').addEventListener('click', yourChoiceCountry);
 
-function seachCountry (event) {
-    event.preventDefault();
-    if (countriesObject) {console.log('є обєкт')}
-    else {'нема обєкту'}
+function yourChoiceCountry (event) {
+
+    countryNameForSeach.value = event.target.dataset.value;
+    findCountry(event);
 }
