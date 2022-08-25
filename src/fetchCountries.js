@@ -21,8 +21,8 @@ countriesObject = fetch(`https://restcountries.com/v3.1/name/${name}`)
   console.log(data);
 
   data.flatMap(country => {
-      output += `<li class="form-item" data-value="${country.name.common}">
-      <img src="${country.flags.svg}" alt="country flag of ${country.name.common}" data-value="${country.name.common}" width="30" />
+      output += `<li class="form-item" data-value="${country.name.official}">
+      <img src="${country.flags.svg}" alt="country flag of ${country.name.common}" data-value="${country.name.official}" width="30" />
       ${country.name.common}, ${country.capital}</li>`;
      
   Object.keys(country.languages).forEach((key)=>
