@@ -26,12 +26,12 @@ countriesObject = fetch(`https://restcountries.com/v3.1/name/${name}`)
       ${country.name.common}, ${country.capital}</li>`;
      
   Object.keys(country.languages).forEach((key)=>
-  arrayLanguages += `${country.languages[key]} `);
-
+  arrayLanguages += `${country.languages[key]}, `);
+  
   countryData = `
       <p><b>Capital:</b> ${country.capital}</p>
       <p><b>Population:</b> ${country.population}</p>
-      <p><b>Languages:</b> ${arrayLanguages} </p>'
+      <p><b>Languages:</b> ${arrayLanguages.substring(0, arrayLanguages.length - 2)} </p>'
       `
   count +=1;
 
@@ -42,6 +42,7 @@ countriesObject = fetch(`https://restcountries.com/v3.1/name/${name}`)
   
 if (count === 1) {
     countryContainer.insertAdjacentHTML('afterbegin', `${countryData}`);
+    countryList.style.fontSize = "26px";
     countryList.insertAdjacentHTML('afterbegin', `${output}`)
 } 
 
