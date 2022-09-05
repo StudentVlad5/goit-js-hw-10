@@ -10,6 +10,7 @@ countryNameForSeach.autofocus = true;
 countryNameForSeach.pattern = "[A-Za-z]";
 countryNameForSeach.title = infoPerem;
 countryNameForSeach.placeholder = "Enter country name";
+countryNameForSeach.style.width = "350px";
 document.querySelector('label').insertAdjacentHTML('afterbegin',`<p><b>${infoPerem}</b></p>`);
 
 countryNameForSeach.addEventListener('input', debounce(findCountry, DEBOUNCE_DELAY))
